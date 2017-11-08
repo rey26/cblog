@@ -7,3 +7,29 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+$c-lite: #FFF; //primary color
+
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+
+.blog-pagination {
+  margin: 1%;
+  padding: 1%;
+  background-color: $c-lite;
+  &:hover {
+    cursor: pointer;
+    background: darken($c-lite, 1%);
+    border: 1px solid red;
+    text-decoration: none;
+  }
+}
+#{$a-tags} {
+  color: black;
+  text-decoration: none;
+}
+#{$a-tags-hover} {
+  color: blue;
+  text-decoration: none;
+}

@@ -1,9 +1,10 @@
 @extends('layouts.master')
+
 @section('content')
-    <div class="container">
-        @foreach($posts as $post)
-            <h1>{{$post->title}}</h1>
-            <h3>{{$post->category}}</h3>
-            @endforeach
-    </div>
+<div class="col-sm-8">
+    @foreach($posts as $post)
+       @include('posts.post')
+        @endforeach
+</div>
+@include('layouts.sidebar')
     @endsection

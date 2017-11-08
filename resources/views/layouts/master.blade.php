@@ -12,14 +12,20 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
 @include('layouts.header')
-@yield('content')
+
+<div class="container">
+    <div class="row">
+     @yield('content')
+    </div>
+</div>
 
 <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

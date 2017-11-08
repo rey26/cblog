@@ -1,9 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
@@ -14,10 +12,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Welcome to cBlog system. A clever way to blog.
                 </div>
             </div>
         </div>
-    </div>
-</div>
 @endsection
