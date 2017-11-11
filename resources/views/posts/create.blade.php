@@ -28,9 +28,12 @@
             Body
             <textarea value="{{old('body')}}" class="form-control" id="body" name="body" placeholder="Type the main text here" required></textarea>
         </div>
-        @if(count($errors))
-            @include('layouts.errors')
-        @endif
+
+        <p>{{auth()->id()}}</p>
+
         <button type="submit" class="btn btn-primary">Publish</button>
     </form>
+    @if(count($errors))
+        @include('layouts.errors')
+    @endif
     @endsection

@@ -1,9 +1,11 @@
+<a href="/posts/{{$post->id}}">
 <div class="blog-pagination">
-    <a href="/posts/{{$post->id}}">
+
         <h2>
             {{$post->title}}
         </h2>
-    </a>
-    <p>{{$post->created_at->toFormattedDateString()}}</p>
+
+    <p>{{$post->created_at->toFormattedDateString()}} by {{$post->user->name}}</p>
     <h5>{{$post->subtitle}}</h5>
 </div>
+</a>

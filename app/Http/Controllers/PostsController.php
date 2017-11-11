@@ -10,6 +10,10 @@ use Carbon\Carbon;
 
 class PostsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index(){
         $posts=Post::latest()->get();
 
@@ -33,7 +37,9 @@ class PostsController extends Controller
             'subtitle'=>'required|min:3',
             'body'=>'required|min:10'
             ]);
-        Post::create(request(['title', 'subtitle', 'category', 'body']));
+
+        auth()->user()->publish(new Post(request(['title', 'category', 'subtitle', 'body'])));
+
         return redirect('/');
     }
 }
