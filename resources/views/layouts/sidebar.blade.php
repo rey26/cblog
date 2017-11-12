@@ -6,15 +6,13 @@
     <div class="sidebar-module">
         <h4>Archives</h4>
         <ol class="list-unstyled">
-            <li>Date_1</li>
-            <li>Date_2</li>
-             {{--@foreach($archives as $stat)--}}
-                {{--<li>--}}
-                    {{--<a href="/?month={{ $stat['month'] }}&year={{ $stat['year'] }}">--}}
-                        {{--{{$stat['month'] . ' ' . $stat['year']}}--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-            {{--@endforeach--}}
+            @foreach($stats as $stat)
+            <li>
+                <a href="/?month={{$stat['month']}}&year={{$stat['year']}}">
+                    {{$stat['year'] . ' ' . $stat['month']}}
+                </a>
+            </li>
+            @endforeach
         </ol>
     </div>
 
