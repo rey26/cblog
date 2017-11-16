@@ -35,12 +35,12 @@ class PostsController extends Controller
 //TODO: validate and store checkbox values
         $this->validate(request(),[
             'title' =>'required|min:3',
-            'category' =>'required',
+            'cat_id' =>'required',
             'subtitle'=>'required|min:3',
             'body'=>'required|min:10'
             ]);
 
-        auth()->user()->publish(new Post(request(['title', 'category', 'subtitle', 'body'])));
+        auth()->user()->publish(new Post(request(['title', 'cat_id', 'subtitle', 'body'])));
 
         return redirect('/');
     }

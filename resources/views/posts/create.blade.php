@@ -8,11 +8,11 @@
             <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Title" required>
         </div>
             Category
-        <select name="category" id="category" class="form-control">
+        <select name="cat_id" id="category" class="form-control">
             <option value="">Select a category</option>
-            <option value="programming" >Programming</option>
-            <option value="pr">PR</option>
-            <option value="intro">Intro</option>
+            <option value="1" >Intro</option>
+            <option value="2">PR</option>
+            <option value="3">Programovanie</option>
         </select>
         <div class="form-group">
             Subtitle
@@ -28,8 +28,6 @@
             Body
             <textarea value="{{old('body')}}" class="form-control" id="body" name="body" placeholder="Type the main text here" required></textarea>
         </div>
-
-        <p>{{auth()->id()}}</p>
 
         <button type="submit" class="btn btn-primary">Publish</button>
     </form>

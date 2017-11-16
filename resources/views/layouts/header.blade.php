@@ -17,19 +17,43 @@
                 </a>
             </div>
 
+                <ul class="nav navbar-nav">
+                    <li>
+                            <a href="/Cat/Intro">
+                                Intro
+                            </a>
+                    </li> &nbsp;
+
+                    <li>
+                        <a href="/Cat/PR">
+                            PR
+                        </a>
+                    </li> &nbsp;
+
+                    <li>
+                        <a href="/Cat/Programming">
+                            Programovanie
+                        </a>
+                    </li> &nbsp;
+                </ul>
+
+
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    &nbsp;
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+
                     <!-- Authentication Links -->
                     @guest
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                            <li style="background-color: red; border-radius: 10px">
+                                <a href="/post/create">
+                                    Novy blog
+                                </a>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>

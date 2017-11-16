@@ -2,10 +2,11 @@
 
 namespace App;
 use App\User;
+use App\Cat;
 use Carbon\Carbon;
 class Post extends Model
 {
-    protected $fillable=['user_id', 'title', 'subtitle', 'category', 'body'];
+    protected $fillable=['user_id', 'title', 'subtitle', 'cat_id', 'body'];
 
     public function comments(){
         return $this->hasMany(Comment::class);
@@ -13,6 +14,10 @@ class Post extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function cat(){
+        return $this->belongsTo(Cat::class);
     }
 
     public function addComment($body){
