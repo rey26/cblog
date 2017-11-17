@@ -1,4 +1,4 @@
-<a href="/posts/{{$post->id}}">
+<a href="/posts/{{$post->title}}">
 <div class="blog-pagination">
 
         <h2>

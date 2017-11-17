@@ -8364,8 +8364,6 @@ button.close {
 }
 
 a,
-a:active,
-a:hover,
 a:visited {
   color: black;
   text-decoration: none;
@@ -8375,5 +8373,37 @@ a:active,
 a:hover {
   color: blue;
   text-decoration: none;
+}
+
+#flash-message {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+  -webkit-animation: flash-message 4s forwards;
+          animation: flash-message 4s forwards;
+}
+
+@-webkit-keyframes flash-message {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes flash-message {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 

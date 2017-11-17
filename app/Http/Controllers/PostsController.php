@@ -42,6 +42,8 @@ class PostsController extends Controller
 
         auth()->user()->publish(new Post(request(['title', 'cat_id', 'subtitle', 'body'])));
 
+        session()->flash('message', 'Blog bol uspesne publikovany!');
+
         return redirect('/');
     }
 }

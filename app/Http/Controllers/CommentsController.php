@@ -15,7 +15,9 @@ class CommentsController extends Controller
             'body'=>'required|min:3'
         ]);
 
-       $post->addComment(request('body', 'user_id'));
+       $post->addComment(request(['body'=>'body',
+           'user_id'=>auth()->id()]));
+
         return back();
     }
 }

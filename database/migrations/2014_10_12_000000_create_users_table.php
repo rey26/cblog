@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('username')->unique();
+            //TODO: see WEB_dev folder in Chrome
+            $table->boolean('admin')->default(false);
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();

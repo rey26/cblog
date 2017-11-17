@@ -11,7 +11,7 @@
 
 $c-lite: #FFF; //primary color
 
-$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags: 'a, a:visited';
 $a-tags-hover: 'a:active, a:hover';
 
 .blog-pagination {
@@ -32,4 +32,17 @@ $a-tags-hover: 'a:active, a:hover';
 #{$a-tags-hover} {
   color: blue;
   text-decoration: none;
+}
+
+#flash-message{
+  position:absolute;
+  top: 50px;
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+  animation: flash-message 4s forwards;
+}
+@keyframes flash-message {
+  0%   {opacity: 1;}
+  100% {opacity: 0; display:none;}
 }

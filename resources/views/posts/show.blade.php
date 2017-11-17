@@ -7,7 +7,6 @@
     <p>
         {{$post->body}}
     </p>
-    @include('layouts.comments')
 </div>
     @include('layouts.sidebar')
     @endsection
