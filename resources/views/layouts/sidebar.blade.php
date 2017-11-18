@@ -20,15 +20,13 @@
     <div class="sidebar-module">
         <h4>Tags</h4>
         <ol class="list-unstyled">
-            <li>tag1</li>
-            <li>tag2</li>
-            {{--@foreach($tags as $tag)--}}
-                {{--<li>--}}
-                    {{--<a href="/posts/tags/{{$tag}}">--}}
-                        {{--{{$tag}}--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-            {{--@endforeach--}}
+            @foreach($tags as $tag)
+                <li>
+                    <a href="/posts/tags/{{$tag}}">
+                        {{$tag}}
+                    </a>
+                </li>
+            @endforeach
         </ol>
     </div>
 </div><!-- /.blog-sidebar -->

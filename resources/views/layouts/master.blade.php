@@ -24,6 +24,12 @@
         {{$flash}}
     </div>
 @endif
+
+@if($flash=session('error'))
+    <div id="flash-message" class="alert alert-danger" role="alert">
+        {{$flash}}
+    </div>
+@endif
 <div class="container">
     <div class="row">
      @yield('content')

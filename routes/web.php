@@ -10,10 +10,8 @@ Route::post('/posts/{post}/comments','CommentsController@store');
 
 Route::get('/Cat/{cat}', 'CatController@show');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/posts/tags/{tag}', 'TagsController@index');
 
-get('protected', ['middleware' => ['auth', 'admin'], function() {
-    return view('home');
-}]);
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();

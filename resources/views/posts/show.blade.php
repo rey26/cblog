@@ -3,6 +3,14 @@
 <div class="col-sm-8">
     <h1>{{$post->title}}</h1>
     <p>{{$post->created_at->toFormattedDateString()}} by {{$post->user->name}}</p>
+    <p><strong>{{$post->cat->skWord}}</strong></p>
+    <p>Tags:
+        @if(count($post->tags))
+         @foreach($post->tags as $tag)
+             #{{$tag->name}}
+         @endforeach
+        @endif
+    </p>
     <p>{{$post->subtitle}}</p>
     <p>
         {{$post->body}}

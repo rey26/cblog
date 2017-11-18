@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
 use Closure;
+
 
 class Admin
 {
@@ -19,7 +20,7 @@ class Admin
         {
             return $next($request);
         }
-
+        session()->flash('error', 'Nemas Administratorske prava!');
         return redirect('home');
 
     }

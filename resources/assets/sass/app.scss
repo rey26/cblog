@@ -40,7 +40,7 @@ $a-tags-hover: 'a:active, a:hover';
   width: 100%;
   z-index: 10;
   text-align: center;
-  animation: flash-message 4s forwards;
+  animation: flash-message 8s forwards;
 }
 @keyframes flash-message {
   0%   {opacity: 1;}

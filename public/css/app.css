@@ -8381,8 +8381,8 @@ a:hover {
   width: 100%;
   z-index: 10;
   text-align: center;
-  -webkit-animation: flash-message 4s forwards;
-          animation: flash-message 4s forwards;
+  -webkit-animation: flash-message 8s forwards;
+          animation: flash-message 8s forwards;
 }
 
 @-webkit-keyframes flash-message {

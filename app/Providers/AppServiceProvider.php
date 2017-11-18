@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Post;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +17,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('layouts.sidebar', function($view){
-           return $view->with('stats', $stats=\App\Post::archives());
+           $stats=\App\Post::archives();
+           $tags=\App\Tag::has('posts')->pluck('name');
+            $view->with(compact(['stats', 'tags']));
+        });
+        view()->composer('layouts.header', function($view){
+            $view->with('user', $user=Auth::user());
         });
     }
 

@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
-    <h1>Create a new blog</h1>
+    <h1>Vytvor nový blog</h1>
     <form method="POST" action="/posts">
         {{csrf_field()}}
         <div class="form-group">
-            Title
-            <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Title" required>
+            Nadpis
+            <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Title" required tabindex="0">
         </div>
             Category
         <select name="cat_id" id="category" class="form-control">
