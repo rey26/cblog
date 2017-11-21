@@ -30,6 +30,12 @@ class User extends Authenticatable
 
     public function publish(Post $post){
         $this->posts()->save($post);
+        $tags=request(['tags']);
+        if($tags) {
+            foreach ($tags as $tag) {
+                $post->tags()->attach($tag);
+            }
+        }
     }
 
     public function posts(){

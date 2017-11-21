@@ -8,7 +8,7 @@
             <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Title" required tabindex="0">
         </div>
             Category
-        <select name="cat_id" id="category" class="form-control">
+        <select onselect="{{old('cat_id')}}" name="cat_id" id="category" class="form-control">
             <option value="">Select a category</option>
             <option value="1" >Intro</option>
             <option value="2">PR</option>
@@ -20,9 +20,9 @@
         </div>
         <div class="form-group">
             Tags<br>
-            <input type="checkbox" id="tags" name="tag[0]" value="Laravel">Laravel <br>
-            <input type="checkbox" id="tags" name="tag[1]" value="JavaScript">JavaScript <br>
-            <input type="checkbox" id="tags" name="tag[2]" value="Frontend">FrontEnd
+            @foreach($tags as $tag)
+            <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}">{{$tag->name}}<br>
+                @endforeach
         </div>
         <div class="form-group">
             Body

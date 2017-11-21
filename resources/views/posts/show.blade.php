@@ -7,7 +7,9 @@
     <p>Tags:
         @if(count($post->tags))
          @foreach($post->tags as $tag)
-             #{{$tag->name}}
+                <a href="/posts/tags/{{$tag->name}}">
+                    #{{$tag->name}}
+                </a>
          @endforeach
         @endif
     </p>

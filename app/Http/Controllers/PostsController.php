@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Carbon\Carbon;
+use App\Tag;
+
 
 
 class PostsController extends Controller
@@ -27,10 +29,11 @@ class PostsController extends Controller
     }
 
     public function create(){
-        return view('posts.create');
+        $tags=Tag::all();
+        return view('posts.create', compact('tags'));
     }
 
-    public function store(){
+    public function store(Post $post){
 
 //TODO: validate and store checkbox values
         $this->validate(request(),[
@@ -40,7 +43,7 @@ class PostsController extends Controller
             'body'=>'required|min:10'
             ]);
 
-        auth()->user()->publish(new Post(request(['title', 'cat_id', 'subtitle', 'body'])));
+        auth()->user()->publish(new Post(request(['title', 'cat_id', 'subtitle', 'body', 'tags'])));
 
         session()->flash('message', 'Blog bol uspesne publikovany!');
 
