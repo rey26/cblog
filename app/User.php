@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
     public function isAdmin(){
         return $this->admin;
     }

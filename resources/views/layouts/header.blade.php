@@ -48,15 +48,15 @@
                     <!-- Authentication Links -->
 
                     @guest
-                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('login') }}">Prihlásiť sa</a></li>
 
                         @else
                             @if($user->isAdmin())
-                                <li><a href="{{ route('register') }}">Register</a></li>
+                                <li><a href="{{ route('register') }}">Registrácia</a></li>
                             @endif
                             <li style="background-color: red; border-radius: 10px">
                                 <a href="/post/create">
-                                    Novy blog
+                                    Nový blog
                                 </a>
                             </li>
                             <li class="dropdown">
@@ -69,7 +69,10 @@
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Odhlásiť sa
+                                        </a>
+                                        <a href="/author/{{$user->username}}">
+                                            Moje blogy
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

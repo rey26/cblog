@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cat;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
@@ -28,14 +29,19 @@ class PostsController extends Controller
         return view('posts.show', compact('post'));
     }
 
+    public function author(User $user){
+        $posts=$user->posts()->orderBy('updated_at', 'desc')->get();
+        return view('posts.index', compact('posts'));
+    }
+
     public function create(){
         $tags=Tag::all();
-        return view('posts.create', compact('tags'));
+        $cats=Cat::all();
+        return view('posts.create', compact(['tags', 'cats']));
     }
 
     public function store(Post $post){
 
-//TODO: validate and store checkbox values
         $this->validate(request(),[
             'title' =>'required|min:3',
             'cat_id' =>'required',

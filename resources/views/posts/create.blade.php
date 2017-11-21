@@ -4,32 +4,32 @@
     <form method="POST" action="/posts">
         {{csrf_field()}}
         <div class="form-group">
-            Nadpis
-            <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Title" required tabindex="0">
+            <label for="title">Nadpis</label>
+            <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Nadpis" required tabindex="0">
         </div>
-            Category
+            Kategoria
         <select onselect="{{old('cat_id')}}" name="cat_id" id="category" class="form-control">
-            <option value="">Select a category</option>
-            <option value="1" >Intro</option>
-            <option value="2">PR</option>
-            <option value="3">Programovanie</option>
+            <option value="">Vyber kategoriu</option>
+            @foreach($cats as $cat)
+            <option value="{{$cat->id}}" >{{$cat->skWord}}</option>
+                @endforeach
         </select>
         <div class="form-group">
-            Subtitle
-            <input value="{{old('subtitle')}}" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" required>
+            Podnadpis/SEO metadata
+            <input value="{{old('subtitle')}}" class="form-control" id="subtitle" name="subtitle" placeholder="Podnadpis" required>
         </div>
         <div class="form-group">
-            Tags<br>
+            #Tagy<br>
             @foreach($tags as $tag)
-            <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}">{{$tag->name}}<br>
+            <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}"><label for="tags[]">{{$tag->name}}</label><br>
                 @endforeach
         </div>
         <div class="form-group">
-            Body
-            <textarea value="{{old('body')}}" class="form-control" id="body" name="body" placeholder="Type the main text here" required></textarea>
+            Blog->hlavný text
+            <textarea value="{{old('body')}}" class="form-control" id="body" name="body" placeholder="Môžeš začať písať..." required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Publish</button>
+        <button type="submit" class="btn btn-primary">Publikuj</button>
     </form>
     @if(count($errors))
         @include('layouts.errors')
