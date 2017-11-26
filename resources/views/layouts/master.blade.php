@@ -14,7 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
 
 <body>
 @include('layouts.header')

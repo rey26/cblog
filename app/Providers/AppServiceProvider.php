@@ -19,10 +19,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.sidebar', function($view){
            $stats=\App\Post::archives();
            $tags=\App\Tag::has('posts')->pluck('name');
-            $view->with(compact(['stats', 'tags']));
+           $view->with(compact(['stats', 'tags']));
         });
         view()->composer('layouts.header', function($view){
             $view->with('user', $user=Auth::user());
+            $view->with('cats', $cats=\App\Cat::all());
         });
     }
 

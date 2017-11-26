@@ -5,7 +5,7 @@
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="true">
                     <span class="sr-only">Toggle Navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -17,27 +17,28 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
-
-                <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav dropDownMenu">
+                <li>
+                    <a href="#">DropDown_1</a>
+                    <ul>
+                        <li><a href="#">Test</a></li>
+                        <li><a href="#">DropDown_2</a>
+                            <ul>
+                                <li><a href="#">test2.1</a></li>
+                                <li><a href="#">test2.2</a></li>
+                                <li><a href="#">test2.3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                @foreach($cats as $cat)
                     <li>
-                            <a href="/Cat/Intro">
-                                Intro
-                            </a>
-                    </li> &nbsp;
-
-                    <li>
-                        <a href="/Cat/PR">
-                            PR
+                        <a href="/Cat/{{$cat->keyword}}">
+                            {{$cat->skWord}}
                         </a>
                     </li> &nbsp;
-
-                    <li>
-                        <a href="/Cat/Programming">
-                            Programovanie
-                        </a>
-                    </li> &nbsp;
-                </ul>
-
+                    @endforeach
+            </ul>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
