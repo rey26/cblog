@@ -1,10 +1,10 @@
 <div class="col-sm-3 offset-sm-1 blog-sidebar">
     <div class="sidebar-module sidebar-module-inset">
-        <h4>About</h4>
-        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <h4>O cBlog-u</h4>
+        <p>Tento projekt je návrh jednoduchého blogovacieho systému. Používateľské prostredie je jednoduché na použitie.</p>
     </div>
     <div class="sidebar-module">
-        <h4>Archives</h4>
+        <h4>Podľa dátumu</h4>
         <ol class="list-unstyled">
             @foreach($stats as $stat)
             <li>
@@ -18,7 +18,7 @@
 
 
     <div class="sidebar-module">
-        <h4>Tags</h4>
+        <h4>Tagy</h4>
         <ol class="list-unstyled">
             @foreach($tags as $tag)
                 <li>

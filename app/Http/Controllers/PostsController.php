@@ -14,7 +14,7 @@ use App\Tag;
 class PostsController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index', 'show', 'author']);
     }
 
     public function index(){

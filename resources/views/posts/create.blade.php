@@ -19,6 +19,7 @@
             <input value="{{old('subtitle')}}" class="form-control" id="subtitle" name="subtitle" placeholder="Podnadpis" required>
         </div>
         <div class="form-group">
+            {{--TODO: interactively add new tag text-input https://www.youtube.com/watch?time_continue=21&v=yaxUV3Ib4vM--}}
             #Tagy<br>
             @foreach($tags as $tag)
             <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}"><label for="tags[]">{{$tag->name}}</label><br>
