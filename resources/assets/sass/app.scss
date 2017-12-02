@@ -6,7 +6,7 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 
 $c-lite: #FFF; //primary color
@@ -34,9 +34,16 @@ $a-tags-hover: 'a:active, a:hover';
   text-decoration: none;
 }
 
+.add{
+  padding: 5px;
+  background: red;
+  border-radius: 10px;
+}
+
 .clickable:hover{
   cursor: pointer;
 }
+
 * {
   margin: 0;
   padding: 0;

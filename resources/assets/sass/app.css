@@ -1,61 +1,104 @@
-/*
-Error: File to import not found or unreadable: ~bootstrap-sass/assets/stylesheets/bootstrap.
-        on line 9 of app.scss
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+.blog-pagination {
+  margin: 1%;
+  padding: 1%;
+  background-color: #FFF; }
+  .blog-pagination:hover {
+    cursor: pointer;
+    background: #fcfcfc;
+    border: 1px solid red;
+    text-decoration: none; }
 
-4: 
-5: // Variables
-6: @import "variables";
-7: 
-8: // Bootstrap
-9: @import "~bootstrap-sass/assets/stylesheets/bootstrap";
-10: 
-11: 
-12: $c-lite: #FFF; //primary color
-13: 
-14: $a-tags: 'a, a:visited';
+a, a:visited {
+  color: black;
+  text-decoration: none; }
 
-Backtrace:
-app.scss:9
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/import_node.rb:67:in `rescue in import'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/import_node.rb:45:in `import'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/import_node.rb:28:in `imported_file'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/import_node.rb:37:in `css_import?'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:314:in `visit_import'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `map'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:161:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/root_node.rb:36:in `css_tree'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/plugin/compiler.rb:209:in `each'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/plugin.rb:82:in `update_stylesheets'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:51:in `process_result'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
-/var/lib/gems/2.3.0/gems/sass-3.5.2/bin/scss:13:in `<top (required)>'
-/usr/local/bin/scss:23:in `load'
-/usr/local/bin/scss:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~bootstrap-sass/assets/stylesheets/bootstrap.\A         on line 9 of app.scss\A \A 4: \A 5: // Variables\A 6: @import \"variables\";\A 7: \A 8: // Bootstrap\A 9: @import \"~bootstrap-sass/assets/stylesheets/bootstrap\";\A 10: \A 11: \A 12: $c-lite: #FFF; //primary color\A 13: \A 14: $a-tags: 'a, a:visited';"; }
+a:active, a:hover {
+  color: black;
+  text-decoration: none; }
+
+.add {
+  padding: 5px;
+  background: red;
+  border-radius: 10px; }
+
+.clickable:hover {
+  cursor: pointer; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+.dropDownMenu ul {
+  list-style: none; }
+
+.dropDownMenu li {
+  position: relative; }
+
+.dropDownMenu a {
+  padding: 10px 20px;
+  display: block;
+  text-decoration: none; }
+
+.dropDownMenu a:hover {
+  background: greenyellow;
+  text-decoration: none; }
+
+.dropDownMenu > li {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: -4px; }
+
+.dropDownMenu > li:first-child {
+  margin-left: 0; }
+
+.dropDownMenu > li > a:hover {
+  text-decoration: none; }
+
+.dropDownMenu > li > ul {
+  text-align: left;
+  width: auto;
+  display: none;
+  background: red;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999999; }
+
+.dropDownMenu > li:hover > ul {
+  display: block; }
+
+.dropDownMenu ul li a:hover {
+  text-decoration: none; }
+
+.dropDownMenu > li > ul > li > ul {
+  text-align: left;
+  display: none;
+  background: plum;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  z-index: 9999999; }
+
+.dropDownMenu > li > ul > li:hover > ul {
+  display: block; }
+
+.dropDownMenu ul ul li a:hover {
+  text-decoration: none; }
+
+#flash-message {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+  animation: flash-message 8s forwards; }
+
+@keyframes flash-message {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    display: none; } }
+
+/*# sourceMappingURL=app.css.map */

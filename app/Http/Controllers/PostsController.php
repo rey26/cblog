@@ -49,6 +49,13 @@ class PostsController extends Controller
             'body'=>'required|min:10'
             ]);
 
+        $newTag[]=request(['anTag']);
+        dd($newTag);
+        $tag=new Tag();
+        $tag->create($newTag);
+
+
+
         auth()->user()->publish(new Post(request(['title', 'cat_id', 'subtitle', 'body', 'tags'])));
 
         session()->flash('message', 'Blog bol uspesne publikovany!');

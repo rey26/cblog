@@ -35,7 +35,7 @@ $factory->define(Post::class, function (Faker $faker) {
             return factory(\App\Cat::class)->create()->id;
         },
         'user_id' => function(){
-        return factory(\App\User::class)->create()->id;
+            return factory(\App\User::class)->create()->id;
         },
         'subtitle' => $faker->sentence,
         'body'=>$faker->paragraph()

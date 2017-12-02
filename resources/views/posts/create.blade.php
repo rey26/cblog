@@ -23,7 +23,13 @@
             #Tagy<br>
             @foreach($tags as $tag)
             <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}"><label for="tags[]">{{$tag->name}}</label><br>
-                @endforeach
+            @endforeach
+            <div id="addTag" class="btn-info btn" style="border-radius: 20px">
+               + Novy tag
+            </div>
+            <div id="newTag" class="hidden">
+                #<input name="anTag" type="text">
+            </div>
         </div>
         <div class="form-group">
             Blog->hlavný text
@@ -32,6 +38,14 @@
 
         <button type="submit" class="btn btn-primary">Publikuj</button>
     </form>
+    <script>
+        $(document).ready(function () {
+
+            $("#addTag").on("click", function(){
+                $("#newTag").toggleClass("hidden");
+            })
+        });
+    </script>
     @if(count($errors))
         @include('layouts.errors')
     @endif
