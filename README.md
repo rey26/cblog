@@ -11,33 +11,24 @@ sorted by Categories, Tags, Users and Date. The UI is very intuitive and simple 
 
 -git-clone this project to your machine
 -run composer install
--Copy .env.example file to .env on root folder. You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal Ubuntu.
--Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
+-Copy .env.example file to .env on root folder.
+-Open your .env file so that it can interact with your database.
 -If you are a perfectionist as I'm change APP_NAME to cBlog	
 -Run php artisan key:generate
 -Run php artisan migrate
--create and Admin account using this command: php artisan db:seed --class=AdminSeeder
+-generate some users and posts: php artisan db:seed
 -if throws error-> run composer update and then composer dump-autoload and try again
--now, you can run the page using php artisan serve or vale link (still inside cBlog directory)
--open users table in the database, there is a user with a 1 in the admin collumn. Copy the username. Switch to /login, paste the username and type default password 'secret'
+-now, you can run the page using php artisan serve or valet link (still inside cBlog directory)
+-open users table in the database, there is a user with a 1 in the admin column. Copy the username. Switch to /login, paste the username and type default password 'secret'
 -Now you are successfully logged in!
--for generating a post/s run php artisan db:seed --class=PostSeeder
--Refresh the site and there are posts, users and categories.
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+-Switch to "/" site and there are posts, users and categories each interactively linked
+-as a Admin, you can register new users and in the future (TODO for v1.1) you will be able to edit or delete every post
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+-ManyToMany relationship has to be implemented in Factories so that Tags can be linked with posts and vice versa
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+-My name is Matej, I'm web developer from Slovakia/Europe. This is my very first project, so do not hesitate to leave me TODOs. --> matej.malicky@gmail.com
+-The project could not be done without tireless help of my dev-friend Vlado
