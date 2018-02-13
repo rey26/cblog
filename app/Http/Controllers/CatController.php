@@ -16,4 +16,9 @@ class CatController extends Controller
 
     }
 
+    public function all(){
+        $cats=Cat::all();
+        return view('cats.all', compact('cats'));
+    }
+
 }

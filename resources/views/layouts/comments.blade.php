@@ -1,6 +1,6 @@
 <hr>
 
-//TODO: assign user_id to a comment. Comments are temporarly disabled
+//TODO: assign user_id to a comment. Comments are temporarily disabled
 
 <div class="comments">
     <ul class="list-group">

@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.blog-pagination {
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+.blog-pagination {
   margin: 1%;
   padding: 1%;
   background-color: #FFF;
@@ -31,6 +32,10 @@ a:hover {
 
 .clickable:hover {
   cursor: pointer;
+}
+
+.cat-select{
+  background-color: white;
 }
 
 * {

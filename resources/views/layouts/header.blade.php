@@ -33,8 +33,8 @@
                 </li>
                 @foreach($cats as $cat)
                     <li>
-                        <a href="/Cat/{{$cat->keyword}}">
-                            {{$cat->skWord}}
+                        <a href="/cat/{{$cat->slug}}">
+                            {{$cat->title}}
                         </a>
                     </li> &nbsp;
                     @endforeach

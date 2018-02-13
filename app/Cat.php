@@ -12,8 +12,16 @@ class Cat extends Model
         return $this->hasMany(Post::class);
     }
 
+    public function parent(){
+        return $this->belongsTo('App\Cat', 'parent_id');
+    }
+
+    public function children(){
+        return $this->hasMany('App\Cat', 'parent_id');
+    }
+
     public function getRouteKeyName()
     {
-        return 'keyword';
+        return "slug";
     }
 }

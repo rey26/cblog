@@ -8,11 +8,23 @@
             <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Nadpis" required tabindex="0">
         </div>
             Kategoria
-        <select onselect="{{old('cat_id')}}" name="cat_id" id="category" class="form-control">
+        <select onselect="{{old('cat_id')}}" name="cat_id" id="category" class="form-control cat-select">
             <option value="">Vyber kategoriu</option>
+
             @foreach($cats as $cat)
-            <option value="{{$cat->id}}" >{{$cat->skWord}}</option>
-                @endforeach
+                @if($cat->children->count() > 0)
+                    {{$cat->title}}
+                    <ol>
+                        <div style="margin-left: 10px;">
+                            @foreach($cat->children as $subCat)
+                                <li><option value="{{$subCat->id}}">{{$subCat->title}}</option></li>
+                            @endforeach
+                        </div>
+                    </ol>
+                @elseif(!$cat->parent)
+                    <option value="{{$cat->id}}">{{$cat->title}}</option>
+                @endif
+            @endforeach
         </select>
         <div class="form-group">
             Podnadpis/SEO metadata
@@ -24,12 +36,12 @@
             @foreach($tags as $tag)
             <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}"><label for="tags[]">{{$tag->name}}</label><br>
             @endforeach
-            <div id="addTag" class="btn-info btn" style="border-radius: 20px">
-               + Novy tag
-            </div>
-            <div id="newTag" class="hidden">
-                #<input name="anTag" type="text">
-            </div>
+            {{--<div id="addTag" class="btn-info btn" style="border-radius: 20px">--}}
+               {{--+ Novy tag--}}
+            {{--</div>--}}
+            {{--<div id="newTag" class="hidden">--}}
+                {{--#<input name="anTag" type="text">--}}
+            {{--</div>--}}
         </div>
         <div class="form-group">
             Blog->hlavný text

@@ -34,6 +34,9 @@ $factory->define(Post::class, function (Faker $faker) {
         'cat_id' => function(){
             return factory(\App\Cat::class)->create()->id;
         },
+        'sub_cat_id' => function(){
+            return factory(\App\subCat::class)->create()->id;
+        },
         'user_id' => function(){
             return factory(\App\User::class)->create()->id;
         },

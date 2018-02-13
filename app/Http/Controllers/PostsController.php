@@ -49,10 +49,10 @@ class PostsController extends Controller
             'body'=>'required|min:10'
             ]);
 
-        $newTag[]=request(['anTag']);
-        dd($newTag);
-        $tag=new Tag();
-        $tag->create($newTag);
+//        $newTag[]=request(['anTag']);
+//        dd($newTag);
+//        $tag=new Tag();
+//        $tag->create($newTag);
 
 
 
