@@ -55,7 +55,7 @@
                             @if($user->isAdmin())
                                 <li><a href="{{ route('register') }}">Registrácia</a></li>
                             @endif
-                            <li style="background-color: red; border-radius: 10px">
+                            <li class="add">
                                 <a href="/post/create">
                                     Nový blog
                                 </a>
