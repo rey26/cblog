@@ -32,16 +32,8 @@ a:hover {
   cursor: pointer;
 }
 
-.cat-select {
-  background: #FFF;
-}
-
-.arrow-down {
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #f00;
+.hidden {
+  display: none;
 }
 
 * {

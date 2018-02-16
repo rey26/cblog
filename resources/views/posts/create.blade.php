@@ -8,18 +8,17 @@
             <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Nadpis" required tabindex="0">
         </div>
             Kategoria
-        <select onselect="{{old('cat_id')}}" name="cat_id" id="category" class="form-control cat-select">
+        <select onselect="{{old('cat_id')}}" name="cat_id" id="category" class="form-control">
             <option value="">Vyber kategoriu</option>
 
             @foreach($cats as $cat)
                 @if($cat->children->count() > 0)
-                    {{$cat->title}}
+                    <option disabled>{{$cat->title}}</option>
 
-                        <div style="margin-left: 10px;">
                             @foreach($cat->children as $subCat)
-                                <option value="{{$subCat->id}}">{{$subCat->title}}</option>
+                                <option value="{{$subCat->id}}">&nbsp;&nbsp;&nbsp;{{$subCat->title}}</option>
                             @endforeach
-                        </div>
+
 
                 @elseif(!$cat->parent)
                     <option value="{{$cat->id}}">{{$cat->title}}</option>
@@ -27,21 +26,6 @@
             @endforeach
         </select>
 
-        <div class="dropClick form-control">
-            <div class="arrow-down" style="float: right;"></div>
-            @foreach($cats as $cat)
-                @if($cat->children->count() > 0)
-                    {{$cat->title}}
-                        <div style="margin-left: 10px;">
-                            @foreach($cat->children as $subCat)
-                                <input type="radio" name="cat_id" value="{{$subCat->id}}">{{$subCat->title}}<br>
-                            @endforeach
-                        </div>
-                         @elseif(!$cat->parent)
-                    <input type="radio" name="cat_id" value="{{$cat->id}}">{{$cat->title}}<br>
-                @endif
-            @endforeach
-        </div>
         <div class="form-group">
             Podnadpis/SEO metadata
             <input value="{{old('subtitle')}}" class="form-control" id="subtitle" name="subtitle" placeholder="Podnadpis" required>
@@ -72,6 +56,7 @@
             $("#addTag").on("click", function(){
                 $("#newTag").toggleClass("hidden");
             })
+
         });
     </script>
     @if(count($errors))
