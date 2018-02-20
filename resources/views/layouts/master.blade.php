@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{asset('/js/app.js')}}"></script>
-    </head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
 
 <body>
 @include('layouts.header')
@@ -25,6 +29,8 @@
         {{$flash}}
     </div>
 @endif
+
+@include('layouts.adminbar')
 
 @if($flash=session('error'))
     <div id="flash-message" class="alert alert-danger" role="alert">
@@ -37,7 +43,7 @@
     </div>
 </div>
 
-<script src="{{ asset('js/app.js') }}"></script>
+
 
 </body>
 </html>

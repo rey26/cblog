@@ -14,7 +14,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'cBlog') }}
                 </a>
             </div>
             <ul class="nav navbar-nav dropDownMenu">
@@ -32,12 +32,22 @@
                     </ul>
                 </li>
                 @foreach($cats as $cat)
-                    <li>
-                        <a href="/cat/{{$cat->slug}}">
-                            {{$cat->title}}
-                        </a>
-                    </li> &nbsp;
-                    @endforeach
+                    @if($cat->children->count() > 0)
+                        <li><a href="#">{{$cat->title}}</a>
+                                <ul>
+                                    @foreach($cat->children as $subCat)
+                                        <li><a href="{{$subCat->slug}}">{{$subCat->title}}</a></li>
+                                    @endforeach
+
+                                </ul>
+                        </li>
+
+
+
+                    @elseif(!$cat->parent)
+                        <li><a href="{{$cat->slug}}">{{$cat->title}}</a></li>
+                    @endif
+                @endforeach
             </ul>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">

@@ -1,19 +1,20 @@
 @extends('layouts.master')
 @section('content')
-    <ul>
+    <div class="col-md-8 col-md-offset-2">
+    <table class="admin-table" style="width: 50%;">
+        <th>Kategoria</th><th>Podkategoria</th>
     @foreach($cats as $cat)
             @if($cat->children->count() > 0)
-            <li>{{$cat->title}}</li>
-                <ul>
-                <div style="margin-left: 10px;">
+                <tr><td>{{$cat->title}}</td><td></td></tr>
+
         @foreach($cat->children as $subCat)
-                     <li>{{$subCat->title}}</li>
+                    <tr><td></td><td>{{$subCat->title}}</td></tr>
             @endforeach
-                </div>
-                </ul>
+
             @elseif(!$cat->parent)
-                <li>{{$cat->title}}</li>
+                <tr><td>{{$cat->title}}</td><td></td></tr>
             @endif
         @endforeach
-    </ul>
+    </table>
+    </div>
     @endsection

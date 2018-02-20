@@ -23,6 +23,44 @@ a:hover {
   text-decoration: none;
 }
 
+.admin-bar {
+  background: #bf5329;
+  width: 10%;
+  position: absolute;
+  top: 55px;
+  left: 3px;
+  font-size: 1.2em;
+  display: block;
+}
+
+.admin-bar li {
+  border: 1px solid black;
+  padding: 1px;
+}
+
+.admin-bar li:hover {
+  cursor: pointer;
+  background: #fcfcfc;
+  border: 1px solid red;
+  text-decoration: none;
+}
+
+.sub-opt {
+  background: grey;
+}
+
+.sub-opt a {
+  text-decoration: none;
+}
+
+.admin-table td {
+  border: 1px solid black;
+  padding: 1px;
+  width: 5vw;
+  text-align: left;
+  font-size: 1.2em;
+}
+
 .add {
   background: red;
   border-radius: 10px;
