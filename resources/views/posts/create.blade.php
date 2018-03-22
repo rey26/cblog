@@ -7,6 +7,10 @@
             <label for="title">Nadpis</label>
             <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Nadpis" required tabindex="0">
         </div>
+        <div class="form-group">
+            <label for="slug">Slug</label>
+            <input value="" class="form-control" id="slug" name="slug" placeholder="slug" required tabindex="0">
+        </div>
             Kategoria
         <select onselect="{{old('cat_id')}}" name="cat_id" id="category" class="form-control">
             <option value="">Vyber kategoriu</option>
@@ -31,17 +35,20 @@
             <input value="{{old('subtitle')}}" class="form-control" id="subtitle" name="subtitle" placeholder="Podnadpis" required>
         </div>
         <div class="form-group">
-            {{--TODO: interactively add new tag text-input https://www.youtube.com/watch?time_continue=21&v=yaxUV3Ib4vM--}}
             #Tagy<br>
             @foreach($tags as $tag)
             <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}"><label for="tags[]">{{$tag->name}}</label><br>
             @endforeach
-            {{--<div id="addTag" class="btn-info btn" style="border-radius: 20px">--}}
-               {{--+ Novy tag--}}
-            {{--</div>--}}
-            {{--<div id="newTag" class="hidden">--}}
-                {{--#<input name="anTag" type="text">--}}
-            {{--</div>--}}
+            <span id="freshTags"></span>
+            <button id="addTag" class="btn-info btn" style="border-radius: 20px">
+               + Novy tag
+            </button>
+            <div id="addTagDialog" class="hidden">
+                #<input id="newTagBody" value="" type="text">
+                <button id="saveTagBtn" class="btn-info btn" style="border-radius: 20px">
+                    Ulozit
+                </button>
+            </div>
         </div>
         <div class="form-group">
             Blog->hlavný text
@@ -50,15 +57,6 @@
 
         <button type="submit" class="btn btn-primary">Publikuj</button>
     </form>
-    <script>
-        $(document).ready(function () {
-
-            $("#addTag").on("click", function(){
-                $("#newTag").toggleClass("hidden");
-            })
-
-        });
-    </script>
     @if(count($errors))
         @include('layouts.errors')
     @endif

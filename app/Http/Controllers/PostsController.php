@@ -44,6 +44,7 @@ class PostsController extends Controller
 
         $this->validate(request(),[
             'title' =>'required|min:3',
+            'slug' =>'required|min:3',
             'cat_id' =>'required',
             'subtitle'=>'required|min:3',
             'body'=>'required|min:10'
@@ -56,7 +57,7 @@ class PostsController extends Controller
 
 
 
-        auth()->user()->publish(new Post(request(['title', 'cat_id', 'subtitle', 'body', 'tags'])));
+        auth()->user()->publish(new Post(request(['title', 'slug', 'cat_id', 'subtitle', 'body', 'tags'])));
 
         session()->flash('message', 'Blog bol uspesne publikovany!');
 

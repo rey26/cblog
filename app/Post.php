@@ -8,7 +8,7 @@ use App\Tag;
 
 class Post extends Model
 {
-    protected $fillable=['user_id', 'title', 'subtitle', 'cat_id', 'body'];
+    protected $fillable=['user_id', 'title', 'slug', 'subtitle', 'cat_id', 'body'];
 
     public function comments(){
         return $this->hasMany(Comment::class);
@@ -54,6 +54,6 @@ class Post extends Model
 
     public function getRouteKeyName()
     {
-        return 'title';
+        return 'slug';
     }
 }

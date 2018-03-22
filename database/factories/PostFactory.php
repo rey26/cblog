@@ -30,18 +30,15 @@ $factory->define(Post::class, function (Faker $faker) {
 
 
     return [
-        'title' => $faker->sentence,
+        'title' => $faker->sentence(3),
+        'slug' => $faker->word,
         'cat_id' => function(){
             return factory(\App\Cat::class)->create()->id;
-        },
-        'sub_cat_id' => function(){
-            return factory(\App\subCat::class)->create()->id;
         },
         'user_id' => function(){
             return factory(\App\User::class)->create()->id;
         },
-        'tags' => $faker->word,
-        'subtitle' => $faker->sentence,
+        'subtitle' => $faker->text(),
         'body'=>$faker->paragraph()
     ];
 });

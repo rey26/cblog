@@ -11,13 +11,11 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
+
         factory(\App\User::class, 2)->create()->each(function ($u)
             {
-                foreach (range(1, 4) as $i) {
-                    $u->posts()->save(factory(\App\Post::class)->make());
+                    $u->posts()->save(factory(\App\Post::class)->create());
 
-
-            }
         }
         );
 

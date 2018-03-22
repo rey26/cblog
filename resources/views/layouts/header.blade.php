@@ -18,25 +18,27 @@
                 </a>
             </div>
             <ul class="nav navbar-nav dropDownMenu">
-                <li>
-                    <a href="#">DropDown_1</a>
-                    <ul>
-                        <li><a href="#">Test</a></li>
-                        <li><a href="#">DropDown_2</a>
-                            <ul>
-                                <li><a href="#">test2.1</a></li>
-                                <li><a href="#">test2.2</a></li>
-                                <li><a href="#">test2.3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                {{--Multi level dropdown--}}
+
+                {{--<li>--}}
+                    {{--<a href="#">DropDown_1</a>--}}
+                    {{--<ul>--}}
+                        {{--<li><a href="#">Test</a></li>--}}
+                        {{--<li><a href="#">DropDown_2</a>--}}
+                            {{--<ul>--}}
+                                {{--<li><a href="#">test2.1</a></li>--}}
+                                {{--<li><a href="#">test2.2</a></li>--}}
+                                {{--<li><a href="#">test2.3</a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
                 @foreach($cats as $cat)
                     @if($cat->children->count() > 0)
                         <li><a href="#">{{$cat->title}}</a>
                                 <ul>
                                     @foreach($cat->children as $subCat)
-                                        <li><a href="{{$subCat->slug}}">{{$subCat->title}}</a></li>
+                                        <li><a href="/cats/{{$subCat->slug}}">{{$subCat->title}}</a></li>
                                     @endforeach
 
                                 </ul>
@@ -45,7 +47,7 @@
 
 
                     @elseif(!$cat->parent)
-                        <li><a href="{{$cat->slug}}">{{$cat->title}}</a></li>
+                        <li><a href="/cats/{{$cat->slug}}">{{$cat->title}}</a></li>
                     @endif
                 @endforeach
             </ul>
