@@ -11,5 +11,9 @@ let mix = require('laravel-mix');
  |
  */
 
- mix.js('resources/assets/js/ajax.js', 'public/js')
-     .sass('resources/assets/sass/app.sass', 'public/css');
+mix.js('resources/assets/js/create.js', 'public/js')
+    .js('resources/assets/js/register.js', 'public/js')
+    .sass('resources/assets/sass/app.sass', 'public/css')
+    .browserSync({
+        proxy:'cblog.rey'
+    });

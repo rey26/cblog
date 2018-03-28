@@ -61,6 +61,8 @@ function tagUpdater() {
                         $("#editTag").hide();
                     $("#newTagBody").val("");
                     $("#addTagDialog").show();
+                    tagDeleter();
+                    tagUpdater();
                 },
                 error:function (data) {
                     console.log('Error', data);
@@ -78,11 +80,6 @@ $(document).ready(function() {
         $("#slug").val($("#title").val().toLowerCase().replace(/ /g, '-'));
 
     });
-
-    // username slug generator @ auth/register.blade.php
-    $("#name").keyup(function () {
-        $("#username").val($("#name").val().toLowerCase().replace(/ /g, '.'));
-    })
 
     // ajax create  @ layouts/create.blade.php
     $("#addTag").click(function (e) {
@@ -111,10 +108,7 @@ $(document).ready(function() {
             data:formData,
             dataType:'json',
             success:function (data) {
-                let output= '<div id="tagGroup'+ data.id+'"><input type="checkbox" id="tags" name="tags[]" value="'+ data.id + '" checked/><span id="tagName'+data.id+'">'+data.name +'</span>';
-                    output+='&nbsp;<button class="btn btn-danger btn-sm deleteTag" value="'+ data.id +'" type="button"><i class="fas fa-times"></i></button>';
-                    output+='&nbsp;<button class="btn btn-primary btn-sm editTag" value="'+ data.id +'" type="button"><i class="fas fa-edit"></i></button><br></div>';
-                $("#freshTags").append(output);
+                addCheckBox(data);
                 $("#newTagBody").val("");
                 tagDeleter();
                 tagUpdater();

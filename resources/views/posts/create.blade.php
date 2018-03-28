@@ -58,6 +58,7 @@
 
         <button type="submit" class="btn btn-primary">Publikuj</button>
     </form>
+    <script src="/js/create.js"></script>
     @if(count($errors))
         @include('layouts.errors')
     @endif
