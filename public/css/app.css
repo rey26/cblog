@@ -27,6 +27,10 @@ body {
   background-color: black;
 }
 
+.btn {
+  border-radius: 20px;
+}
+
 .admin-bar {
   background: #bf5329;
   width: 10%;

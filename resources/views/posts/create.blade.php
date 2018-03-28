@@ -37,16 +37,17 @@
         <div class="form-group">
             #Tagy<br>
             @foreach($tags as $tag)
-            <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}"><label for="tags[]">{{$tag->name}}</label><br>
+            <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}">{{$tag->name}}<br>
             @endforeach
-            <span id="freshTags"></span>
-            <button id="addTag" class="btn-info btn" style="border-radius: 20px">
+            {{--// place for AJAX added tags below--}}
+            <div id="freshTags"></div>
+            <button id="addTag" class="btn-info btn">
                + Novy tag
             </button>
             <div id="addTagDialog" class="hidden">
-                #<input id="newTagBody" value="" type="text">
-                <button id="saveTagBtn" class="btn-info btn" style="border-radius: 20px">
-                    Ulozit
+                #<input id="newTagBody" value="" type="text" autofocus/>
+                <button id="saveTagBtn" class="btn-info btn">
+                    <i class="fas fa-check"></i>
                 </button>
             </div>
         </div>
