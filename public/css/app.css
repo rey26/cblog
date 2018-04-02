@@ -23,16 +23,23 @@ a:hover {
   text-decoration: none;
 }
 
-body {
-  background-color: black;
-}
-
 .btn {
   border-radius: 20px;
+  margin: 10px;
+}
+
+.navbar-static-top {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+body {
+  padding-top: 50px;
 }
 
 .admin-bar {
-  background: #bf5329;
+  background: brown;
   width: 10%;
   position: absolute;
   top: 55px;
@@ -48,7 +55,7 @@ body {
 
 .admin-bar li:hover {
   cursor: pointer;
-  background: #fcfcfc;
+  background: #d65f5f;
   border: 1px solid red;
   text-decoration: none;
 }
@@ -72,6 +79,18 @@ body {
 .add {
   background: red;
   border-radius: 10px;
+  color: #000;
+}
+
+.row {
+  background: yellow;
+}
+
+.panel {
+  background-color: #2ab27b;
+  font-size: 1.2em;
+  height: 200px;
+  margin: 1px;
 }
 
 .clickable:hover {
@@ -80,81 +99,6 @@ body {
 
 .hidden {
   display: none;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-.dropDownMenu ul {
-  list-style: none;
-}
-
-.dropDownMenu li {
-  position: relative;
-}
-
-.dropDownMenu a {
-  padding: 10px 20px;
-  display: block;
-  text-decoration: none;
-}
-
-.dropDownMenu a:hover {
-  background: greenyellow;
-  text-decoration: none;
-}
-
-.dropDownMenu > li {
-  display: inline-block;
-  vertical-align: top;
-  margin-left: -4px;
-}
-
-.dropDownMenu > li:first-child {
-  margin-left: 0;
-}
-
-.dropDownMenu > li > a:hover {
-  text-decoration: none;
-}
-
-.dropDownMenu > li > ul {
-  text-align: left;
-  width: auto;
-  display: none;
-  background: red;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 9999999;
-}
-
-.dropDownMenu > li:hover > ul {
-  display: block;
-}
-
-.dropDownMenu ul li a:hover {
-  text-decoration: none;
-}
-
-.dropDownMenu > li > ul > li > ul {
-  text-align: left;
-  display: none;
-  background: plum;
-  position: absolute;
-  left: 100%;
-  top: 0;
-  z-index: 9999999;
-}
-
-.dropDownMenu > li > ul > li:hover > ul {
-  display: block;
-}
-
-.dropDownMenu ul ul li a:hover {
-  text-decoration: none;
 }
 
 #flash-message {

@@ -3,7 +3,7 @@
 <div class="col-sm-8">
     <h1>{{$post->title}}</h1>
     <p>{{$post->created_at->toFormattedDateString()}} by <a href="/author/{{$post->user->username}}">{{$post->user->name}}</a></p>
-    <p><strong>{{$post->cat->title}}</strong></p>
+    <p><strong><a href="/posts/cats/{{$post->cat->slug}}">{{$post->cat->title}}</a></strong></p>
     <p>Tags:
         @if(count($post->tags))
          @foreach($post->tags as $tag)

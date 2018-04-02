@@ -6,10 +6,13 @@ Route::get('/posts/{post}', 'PostsController@show');
 Route::get('/post/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 
-Route::get('/cat/all', 'CatController@all');
+Route::get('/cat/all', 'CatsController@all');
+Route::put('/cats', 'CatsController@edit');
+
 
 Route::get('/author/{user}', 'PostsController@author');
 Route::get('/posts/tags/{tag}', 'TagsController@index');
+Route::get('/posts/cats/{cat}', 'CatsController@index');
 
 Route::post('/tags', 'TagsController@store');
 Route::put('/tags/{tag}', 'TagsController@edit');

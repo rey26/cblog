@@ -13,7 +13,9 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/create.js', 'public/js')
     .js('resources/assets/js/register.js', 'public/js')
+    .js('resources/assets/js/categories.js', 'public/js')
     .sass('resources/assets/sass/app.sass', 'public/css')
+    .sass('resources/assets/sass/dropDown.sass', 'public/css')
     .browserSync({
         proxy:'cblog.rey'
     });

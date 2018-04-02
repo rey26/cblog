@@ -17,7 +17,7 @@
                     {{ config('app.name', 'cBlog') }}
                 </a>
             </div>
-            <ul class="nav navbar-nav dropDownMenu">
+            {{--<ul class="nav navbar-nav dropDownMenu">--}}
                 {{--Multi level dropdown--}}
 
                 {{--<li>--}}
@@ -33,33 +33,31 @@
                         {{--</li>--}}
                     {{--</ul>--}}
                 {{--</li>--}}
-                @foreach($cats as $cat)
-                    @if($cat->children->count() > 0)
-                        <li><a href="#">{{$cat->title}}</a>
-                                <ul>
-                                    @foreach($cat->children as $subCat)
-                                        <li><a href="/cats/{{$subCat->slug}}">{{$subCat->title}}</a></li>
-                                    @endforeach
 
-                                </ul>
-                        </li>
-
-
-
-                    @elseif(!$cat->parent)
-                        <li><a href="/cats/{{$cat->slug}}">{{$cat->title}}</a></li>
-                    @endif
-                @endforeach
-            </ul>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-left dropDownMenu">
+                    @foreach($cats as $cat)
+                        @if($cat->children->count() > 0)
+                            <li><a href="#">{{$cat->title}}</a>
+                                <ul>
+                                    @foreach($cat->children as $subCat)
+                                        <li><a href="/posts/cats/{{$subCat->slug}}">{{$subCat->title}}</a></li>
+                                    @endforeach
 
+                                </ul>
+                            </li>
+                        @elseif(!$cat->parent)
+                            <li><a href="/posts/cats/{{$cat->slug}}">{{$cat->title}}</a></li>
+                        @endif
+                    @endforeach
+                </ul>
                 <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
+
 
                     <!-- Authentication Links -->
-
+                        <ul class="nav navbar-nav navbar-right">
                     @guest
                         <li><a href="{{ route('login') }}">Prihlásiť sa</a></li>
 

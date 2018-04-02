@@ -1,0 +1,62 @@
+
+*
+  margin: 0
+  padding: 0
+
+.dropDownMenu ul
+  list-style: none
+
+.dropDownMenu li
+  position: relative
+
+.dropDownMenu a
+  padding: 10px 20px
+  display: block
+  text-decoration: none
+
+.dropDownMenu a:hover
+  background: greenyellow
+  text-decoration: none
+
+.dropDownMenu > li
+  display: inline-block
+  vertical-align: top
+  margin-left: -4px
+
+.dropDownMenu > li:first-child
+  margin-left: 0
+
+
+.dropDownMenu > li > a:hover
+  text-decoration: none
+
+.dropDownMenu > li > ul
+  text-align: left
+  width: auto
+  display: none
+  background: red
+  position: absolute
+  top: 100%
+  left: 0
+  z-index: 9999999
+
+.dropDownMenu > li:hover > ul
+  display: block
+
+.dropDownMenu ul li a:hover
+  text-decoration: none
+
+.dropDownMenu > li > ul > li > ul
+  text-align: left
+  display: none
+  background: plum
+  position: absolute
+  left: 100%
+  top: 0
+  z-index: 9999999
+
+.dropDownMenu > li > ul > li:hover > ul
+  display: block
+
+.dropDownMenu ul ul li a:hover
+  text-decoration: none

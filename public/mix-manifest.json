@@ -1,5 +1,7 @@
 {
     "/js/create.js": "/js/create.js",
     "/css/app.css": "/css/app.css",
-    "/js/register.js": "/js/register.js"
+    "/css/dropDown.css": "/css/dropDown.css",
+    "/js/register.js": "/js/register.js",
+    "/js/categories.js": "/js/categories.js"
 }
