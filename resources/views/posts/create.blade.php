@@ -41,12 +41,12 @@
             @endforeach
             {{--// place for AJAX added tags below--}}
             <div id="freshTags"></div>
-            <button id="addTag" class="btn-info btn">
+            <button type="button" id="addTag" class="btn-info btn">
                + Novy tag
             </button>
             <div id="addTagDialog" class="hidden">
                 #<input id="newTagBody" value="" type="text" autofocus/>
-                <button id="saveTagBtn" class="btn-info btn">
+                <button type="button" id="saveTagBtn" class="btn-info btn">
                     <i class="fas fa-check"></i>
                 </button>
             </div>

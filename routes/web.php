@@ -6,6 +6,7 @@ Route::get('/posts/{post}', 'PostsController@show');
 Route::get('/post/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 
+Route::post('/cats', 'CatsController@store');
 Route::get('/cat/all', 'CatsController@all');
 Route::put('/cats', 'CatsController@edit');
 

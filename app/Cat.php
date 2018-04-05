@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Post;
 class Cat extends Model
 {
+    protected $fillable=['id', 'title', 'slug', 'parent_id'];
+
     public $timestamps = false;
 
     public function posts(){
