@@ -90,10 +90,13 @@ function newCat(data) {
     // <h3><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="{{$cat->id}}"  data-title="Enter name">{{$cat->title}}</a> </h3><br><h4>(pocet clankov <strong>{{$cat->posts->count()}} </strong> )</h4>
     //     @endif
     output += '</div> </div>';
-    $("#catGroup").append(output);
+    $("#catView").append(output);
 }
 
 function editableExt() {
+    var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ".catEdit";
+    var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '/cats';
+
     $.fn.editable.defaults.mode = 'popup';
     $.ajaxSetup({
         headers: {
@@ -101,8 +104,8 @@ function editableExt() {
         }
     });
     // edit category info
-    $('.catEdit').editable({
-        url: '/cats',
+    $(element).editable({
+        url: url,
         ajaxOptions: {
             type: 'put',
             dataType: 'json'
@@ -115,7 +118,6 @@ function editableExt() {
 
 $(document).ready(function () {
     //toggle `popup` / `inline` mode
-
     editableExt();
 
     $("#newCat").click(function () {
@@ -124,42 +126,48 @@ $(document).ready(function () {
         $("#catChildBox").click(function () {
             $("#catChild").toggleClass("hidden");
         });
+        $("#saveCatBtn").click(function (e) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var title = $("#catName").val();
+            var slug = title.toLowerCase();
+            var formData = {
+                title: title,
+                slug: slug,
+                parent_id: 0
+            };
+            $.ajax({
+                type: "POST",
+                url: '/cats',
+                data: formData,
+                dataType: 'json',
+                success: function success(data) {
+                    newCat(data);
+                    $("#catName", "#saveCatBtn").hide();
+                    $("#catEdit").append('<div class="col-sm-10"> <a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a></div>');
+                    editableExt();
+                },
+                error: function error(data) {
+                    console.log('Error: ', data);
+                }
+            });
+        });
         $("#saveChildBtn").click(function (e) {
             e.preventDefault();
             var data = $("#newChildBody").val();
             var newItem = '<li>' + data + '<span class="btn btn-danger btn-sm"><i class="fas fa-times"></i></span></li>';
+
+            // $.ajax({
+            //     type: "POST",
+            //     url: '/cats/child',
+            //     data:
+            // })
             $("#freshChildren").append(newItem);
             $("#newChildBody").val("");
-        });
-    });
-
-    $("#btn-save").click(function (e) {
-        e.preventDefault();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        var title = $("#catName").val();
-        var slug = title.toLowerCase();
-        var formData = {
-            title: title,
-            slug: slug,
-            parent_id: 0
-        };
-        $.ajax({
-            type: "POST",
-            url: '/cats',
-            data: formData,
-            dataType: 'json',
-            success: function success(data) {
-                newCat(data);
-                $("#newCatModal").modal("hide");
-                editableExt();
-            },
-            error: function error(data) {
-                console.log('Error: ', data);
-            }
         });
     });
 });
