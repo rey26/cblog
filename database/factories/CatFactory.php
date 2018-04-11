@@ -18,7 +18,7 @@ $factory->define(App\Cat::class, function (Faker $faker) {
     static $password;
 
     return [
-        'parent_id'=>0,
+        'parentId'=>0,
         'slug' => $faker->word,
         'title'=>$faker->word,
     ];

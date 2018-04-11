@@ -48,8 +48,9 @@
                                     </button><br>
                                 </div>
                             </div>
+                            <span id="freshCat"></span>
                             <div class="col-sm-10">
-                                <input type="checkbox" class="sform-control" id="catChildBox">Podkategorie </input>
+                                <input type="checkbox" class="sform-control" id="catChildBox">Podkategorie</input><br>
                                 <span id="freshChildren"></span>
                                 <div id="catChild" class="hidden">
                                     <input id="newChildBody" value="" type="text" autofocus/>

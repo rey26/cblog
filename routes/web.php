@@ -7,6 +7,7 @@ Route::get('/post/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 
 Route::post('/cats', 'CatsController@store');
+Route::delete('/cats/{cat}', 'CatsController@delete');
 Route::get('/cat/all', 'CatsController@all');
 Route::put('/cats', 'CatsController@edit');
 

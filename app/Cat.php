@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Post;
 class Cat extends Model
 {
-    protected $fillable=['id', 'title', 'slug', 'parent_id'];
+    protected $fillable=['id', 'title', 'slug', 'parentId'];
 
     public $timestamps = false;
 
@@ -15,11 +15,11 @@ class Cat extends Model
     }
 
     public function parent(){
-        return $this->belongsTo('App\Cat', 'parent_id');
+        return $this->belongsTo('App\Cat', 'parentId');
     }
 
     public function children(){
-        return $this->hasMany('App\Cat', 'parent_id');
+        return $this->hasMany('App\Cat', 'parentId');
     }
 
     public function getRouteKeyName()

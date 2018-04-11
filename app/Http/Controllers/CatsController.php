@@ -21,9 +21,14 @@ class CatsController extends Controller
         return response($cat);
     }
 
+    public function delete($cat){
+        $output=Cat::destroy($cat);
+        return $output;
+    }
+
     public function edit(Request $request){
-        $cat_id=$request->get('pk');
-        $cat=Cat::findOrFail($cat_id);
+        $catId=$request->get('pk');
+        $cat=Cat::findOrFail($catId);
         $name=$request->get('name');
         $value=$request->get('value');
         $cat->$name=$value;

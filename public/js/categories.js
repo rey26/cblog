@@ -116,6 +116,89 @@ function editableExt() {
     });
 }
 
+function saveCat() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var title = $("#catName").val();
+    var slug = title.toLowerCase();
+    var formData = {
+        title: title,
+        slug: slug,
+        parentId: 0
+    };
+    $.ajax({
+        type: "POST",
+        url: '/cats',
+        data: formData,
+        dataType: 'json',
+        success: function success(data) {
+            newCat(data);
+            $("#catEdit").hide();
+            $("#freshCat").append('<div id="freshTitle" class="col-sm-8 text-uppercase" style="margin: 1em"><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a></div>');
+            $("#saveChildBtn").attr('data-parent', data.id);
+            editableExt();
+            saveChild();
+        },
+        error: function error(data) {
+            console.log('Error: ', data);
+        }
+    });
+}
+
+function saveChild() {
+    $("#saveChildBtn").click(function (e) {
+        e.preventDefault();
+        var title = $("#newChildBody").val();
+        var slug = title.toLowerCase();
+        var parentId = $(this).attr('data-parent');
+        var formData = {
+            title: title,
+            slug: slug,
+            parentId: parentId
+        };
+        $.ajax({
+            type: "POST",
+            url: '/cats',
+            data: formData,
+            dataType: 'json',
+            success: function success(data) {
+                var freshChild = '<li id="catGroup' + data.id + '"><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a><span data-pk="' + data.id + '" class="btn btn-danger btn-sm deleteChild"><i class="fas fa-times"></i></span><br></li>';
+                $("#freshChildren").append(freshChild);
+                editableExt();
+                deleteChild();
+                $("#newChildBody").val("");
+            },
+            error: function error(data) {
+                console.log('Error: ', data);
+            }
+        });
+    });
+}
+
+function deleteChild() {
+    $(".deleteChild").click(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var id = $(this).attr('data-pk');
+        $.ajax({
+            type: "DELETE",
+            url: '/cats/' + id,
+            success: function success() {
+                $("#catGroup" + id).remove();
+            },
+            error: function error(data) {
+                console.log('Error: ', data);
+            }
+        });
+    });
+}
+
 $(document).ready(function () {
     //toggle `popup` / `inline` mode
     editableExt();
@@ -126,48 +209,14 @@ $(document).ready(function () {
         $("#catChildBox").click(function () {
             $("#catChild").toggleClass("hidden");
         });
+        $("#catEdit").keypress(function (e) {
+            if (e.which == 13) {
+                saveCat();
+            }
+        });
         $("#saveCatBtn").click(function (e) {
             e.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            var title = $("#catName").val();
-            var slug = title.toLowerCase();
-            var formData = {
-                title: title,
-                slug: slug,
-                parent_id: 0
-            };
-            $.ajax({
-                type: "POST",
-                url: '/cats',
-                data: formData,
-                dataType: 'json',
-                success: function success(data) {
-                    newCat(data);
-                    $("#catName", "#saveCatBtn").hide();
-                    $("#catEdit").append('<div class="col-sm-10"> <a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a></div>');
-                    editableExt();
-                },
-                error: function error(data) {
-                    console.log('Error: ', data);
-                }
-            });
-        });
-        $("#saveChildBtn").click(function (e) {
-            e.preventDefault();
-            var data = $("#newChildBody").val();
-            var newItem = '<li>' + data + '<span class="btn btn-danger btn-sm"><i class="fas fa-times"></i></span></li>';
-
-            // $.ajax({
-            //     type: "POST",
-            //     url: '/cats/child',
-            //     data:
-            // })
-            $("#freshChildren").append(newItem);
-            $("#newChildBody").val("");
+            saveCat();
         });
     });
 });
