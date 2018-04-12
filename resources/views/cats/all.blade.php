@@ -1,30 +1,39 @@
 @extends('layouts.master')
 
 @section('content')
-
     <h2 class="text-center" xmlns="http://www.w3.org/1999/html">Kategorie</h2>
-<button type="button" id="newCat" class="btn btn-primary btn-lg text-center">Pridaj</button>
+    <button type="button" id="newCat" class="btn btn-primary btn-lg text-center">Pridaj</button>
     <div class="row panel-group" id="catView">
     @foreach($cats as $cat)
-            <div class="panel panel-default col-lg-push-2 col-lg-4 col-md-6  col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" >
-                <div class="panel-body">
-            @if($cat->children->count() > 0)
+
+            @if($cat->children->count() > 0 )
+                <div id="panel{{$cat->id}}" class="panel panel-default col-lg-push-2 col-lg-4 col-md-6  col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" >
+                    <div class="panel-body">
                         <h3><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="{{$cat->id}}" data-title="Enter name">{{$cat->title}}</a></h3>
-                            <h4>Podkategorie</h4>
+
+                        <h4>Podkategorie</h4>
                             <ul>
                 @foreach($cat->children as $subCat)
                                     <li><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="{{$subCat->id}}" data-title="Enter name">{{$subCat->title}}</a> (pocet clankov <strong>{{$subCat->posts->count()}}</strong> )</li>
                     @endforeach
                             </ul>
-            @elseif(!$cat->parent)
-                        <h3><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="{{$cat->id}}"  data-title="Enter name">{{$cat->title}}</a> </h3><br><h4>(pocet clankov <strong>{{$cat->posts->count()}} </strong> )</h4>
-                    @endif
+                    </div>
                 </div>
-            </div>
+            @elseif(!$cat->parent)
+                <div id="panel{{$cat->id}}" class="panel panel-default col-lg-push-2 col-lg-4 col-md-6  col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" >
+                     <div class="panel-body">
+                        <h3><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="{{$cat->id}}"  data-title="Enter name">{{$cat->title}}</a> </h3><br>
+                         <h4>(pocet clankov <strong>{{$cat->posts->count()}} </strong> )</h4>
+                         @if($cat->posts->count()==0)
+                             <span data-pk="{{$cat->id}}" class="btn btn-danger btn-lg deleteCat"><i class="fas fa-times"></i></span>
+                        @endif
+                     </div>
+                </div>
+            @else
+            @endif
+
         @endforeach
 
-        {{--https://www.youtube.com/watch?v=Du_Ri_w77NM--}}
-        {{--http://vitalets.github.io/x-editable/--}}
     </div>
 
     <div class="modal fade in" id="newCatModal" aria-hidden="true">
@@ -50,7 +59,7 @@
                             </div>
                             <span id="freshCat"></span>
                             <div class="col-sm-10">
-                                <input type="checkbox" class="sform-control" id="catChildBox">Podkategorie</input><br>
+                                <input type="checkbox" class="sform-control" id="catChildBox">Podkategorie<br>
                                 <span id="freshChildren"></span>
                                 <div id="catChild" class="hidden">
                                     <input id="newChildBody" value="" type="text" autofocus/>
@@ -71,5 +80,4 @@
             </div>
         </div>
     </div>
-
-    @endsection
+@endsection

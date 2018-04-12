@@ -77,18 +77,10 @@ module.exports = __webpack_require__(7);
 /***/ (function(module, exports) {
 
 function newCat(data) {
-    var output = '<div class="panel panel-default col-lg-push-2 col-lg-4 col-md-6  col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" >' + +'<div class="panel-body">';
-    //if(data->children->count() > 0){
-    output += '<h3><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a></h3>' + +'<h4>Podkategorie</h4>';
-    //<ul>';
-    //     for(data->children as $subCat)
-    //     <li><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="{{$subCat->id}}" data-title="Enter name">{{$subCat->title}}</a> (pocet clankov <strong>{{$subCat->posts->count()}}</strong> )</li>
-    // @endforeach
-    //</ul>
-    // //}
-    // else if((!$cat->parent)){
-    // <h3><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="{{$cat->id}}"  data-title="Enter name">{{$cat->title}}</a> </h3><br><h4>(pocet clankov <strong>{{$cat->posts->count()}} </strong> )</h4>
-    //     @endif
+    var output = '<div class="panel panel-default col-lg-push-2 col-lg-4 col-md-6  col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" >';
+    output += '<div id="catPanel' + data.id + '" class="panel-body">';
+    output += '<h3><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a></h3>';
+
     output += '</div> </div>';
     $("#catView").append(output);
 }
@@ -165,11 +157,12 @@ function saveChild() {
             data: formData,
             dataType: 'json',
             success: function success(data) {
-                var freshChild = '<li id="catGroup' + data.id + '"><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a><span data-pk="' + data.id + '" class="btn btn-danger btn-sm deleteChild"><i class="fas fa-times"></i></span><br></li>';
+                var freshChild = '<li id="catGroup' + data.id + '"><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a><span data-pk="' + data.id + '" class="btn btn-danger btn-sm deleteCat"><i class="fas fa-times"></i></span></li>';
                 $("#freshChildren").append(freshChild);
                 editableExt();
-                deleteChild();
+                deleteCat();
                 $("#newChildBody").val("");
+                $("#catPanel" + parentId).append(freshChild);
             },
             error: function error(data) {
                 console.log('Error: ', data);
@@ -178,8 +171,9 @@ function saveChild() {
     });
 }
 
-function deleteChild() {
-    $(".deleteChild").click(function () {
+function deleteCat() {
+    $(".deleteCat").click(function () {
+        console.log('Delete Cat');
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -191,6 +185,7 @@ function deleteChild() {
             url: '/cats/' + id,
             success: function success() {
                 $("#catGroup" + id).remove();
+                $("#panel" + id).remove();
             },
             error: function error(data) {
                 console.log('Error: ', data);
@@ -202,6 +197,7 @@ function deleteChild() {
 $(document).ready(function () {
     //toggle `popup` / `inline` mode
     editableExt();
+    deleteCat();
 
     $("#newCat").click(function () {
         $("#modalFormData").trigger("reset");
@@ -219,6 +215,9 @@ $(document).ready(function () {
             saveCat();
         });
     });
+    //todo: generate card with subcategories after ajax call
+    //todo: delete categories and subcategories if(cat->posts==0)
+
 });
 
 /***/ })
