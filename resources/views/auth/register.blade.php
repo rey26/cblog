@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+    <div class="row">
     <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">Registrácia nového používateľa</div>
@@ -84,5 +85,6 @@
                 </div>
             </div>
         </div>
+    </div>
     <script src="/js/register.js"></script>
 @endsection

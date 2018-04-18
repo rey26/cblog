@@ -76,12 +76,22 @@ module.exports = __webpack_require__(7);
 /***/ 7:
 /***/ (function(module, exports) {
 
+function resetModal() {
+    console.log('resetModal');
+    $("#closeModal").click(function () {
+        var html = '                            <label for="inputLink" class="col-sm-2 control-label">Kategoria</label>\n' + '                            <div id="catEdit">\n' + '                                <div class="col-sm-8">\n' + '                                    <input type="text" class="form-control" id="catName" placeholder="Nazov kategorie" value="" autofocus required>\n' + '                                </div>\n' + '                                <div class="col-sm-2">\n' + '                                    <button type="button" class="btn btn-primary" id="saveCatBtn">\n' + '                                        <i class="fas fa-check"></i>\n' + '                                    </button><br>\n' + '                                </div>\n' + '                            </div>\n' + '                            <span id="freshCat"></span>\n' + '                            <div class="col-sm-10">\n' + '                                <input type="checkbox" class="sform-control" id="catChildBox">Podkategorie<br>\n' + '                                <span id="freshChildren"></span>\n' + '                                <div id="catChild" class="hidden">\n' + '                                    <input id="newChildBody" value="" type="text" autofocus/>\n' + '                                        <button type="button" id="saveChildBtn" class="btn-info btn">\n' + '                                            <i class="fas fa-check"></i>\n' + '                                        </button>\n' + '                                </div>\n' + '                            </div>\n';
+        $(".form-group").html(html);
+    });
+}
+
 function newCat(data) {
-    var output = '<div class="panel panel-default col-lg-push-2 col-lg-4 col-md-6  col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" >';
+
+    var output = '<div class="col-lg-4 col-sm-6">';
+    output += '<div class="panel panel-default" >';
     output += '<div id="catPanel' + data.id + '" class="panel-body">';
     output += '<h3><a href="#" class="catEdit" data-name="title" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.title + '</a></h3>';
 
-    output += '</div> </div>';
+    output += '</div> </div></div>';
     $("#catView").append(output);
 }
 
@@ -133,6 +143,7 @@ function saveCat() {
             $("#saveChildBtn").attr('data-parent', data.id);
             editableExt();
             saveChild();
+            resetModal();
         },
         error: function error(data) {
             console.log('Error: ', data);
@@ -198,9 +209,9 @@ $(document).ready(function () {
     //toggle `popup` / `inline` mode
     editableExt();
     deleteCat();
-
     $("#newCat").click(function () {
-        $("#modalFormData").trigger("reset");
+        resetModal();
+        $("#modalForm").trigger("reset");
         $("#newCatModal").modal("show");
         $("#catChildBox").click(function () {
             $("#catChild").toggleClass("hidden");
@@ -214,9 +225,13 @@ $(document).ready(function () {
             e.preventDefault();
             saveCat();
         });
+        // $("#closeModal").click(function () {
+        //     resetModal();
+        // })
     });
-    //todo: generate card with subcategories after ajax call
+
     //todo: delete categories and subcategories if(cat->posts==0)
+    //todo: reset modal form
 
 });
 
