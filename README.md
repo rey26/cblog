@@ -16,6 +16,7 @@ sorted by Categories, Tags, Users and Date. The UI is very intuitive and simple 
 * Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
 * If you are a perfectionist as I'm change APP_NAME to cBlog	
 * Run php artisan key:generate
+* Install npm for further use of SASS
 * Run php artisan migrate
 * create and Admin account using this command: php artisan db:seed --class=AdminSeeder
 * if throws error-> run composer update and then composer dump-autoload and try again
