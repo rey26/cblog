@@ -31,11 +31,14 @@ sorted by Categories, Tags, Users and Date. The UI is very intuitive and simple 
 -Copy .env.example file to .env on root folder.
 -Open your .env file so that it can interact with your database.
 -If you are a perfectionist as I'm change APP_NAME to cBlog	
+-make sure you have php version >=7.1 and all variations of it: php7.x-mysql, php7.x-xml and so on
+-install latest version of npm(v5.6.0) and node(v8.x)
+-run npm update && npm run dev for proper functionality of SASS and .js files
 -Run php artisan key:generate
 -Run php artisan migrate
 -generate some users and posts: php artisan db:seed
 -if throws error-> run composer update and then composer dump-autoload and try again
--now, you can run the page using php artisan serve or valet link (still inside cBlog directory)
+-now, you can open the page in the browser using php artisan serve or valet link (still inside cBlog directory)
 -open users table in the database, there is a user with a 1 in the admin column. Copy the username. Switch to /login, paste the username and type default password 'secret'
 -Now you are successfully logged in!
 -Switch to "/" site and there are posts, users and categories each interactively linked
