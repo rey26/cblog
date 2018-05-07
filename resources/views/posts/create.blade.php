@@ -1,19 +1,19 @@
 @extends('layouts.master')
 @section('content')
-    <h1>Vytvor nový blog</h1>
+    <h1>Create new blog</h1>
     <form method="POST" action="/posts">
         {{csrf_field()}}
         <div class="form-group">
-            <label for="title">Nadpis</label>
-            <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Nadpis" required tabindex="0">
+            <label for="title">Title</label>
+            <input value="{{old('title')}}" class="form-control" id="title" name="title" placeholder="Title" required tabindex="0">
         </div>
         <div class="form-group">
             <label for="slug">Slug</label>
             <input value="" class="form-control" id="slug" name="slug" placeholder="slug" required tabindex="0">
         </div>
-            Kategoria
+            Category
         <select onselect="{{old('cat_id')}}" name="cat_id" id="category" class="form-control">
-            <option value="">Vyber kategoriu</option>
+            <option value="">Select category</option>
 
             @foreach($cats as $cat)
                 @if($cat->children->count() > 0)
@@ -31,18 +31,18 @@
         </select>
 
         <div class="form-group">
-            Podnadpis/SEO metadata
+            Subtitle/SEO metadata
             <input value="{{old('subtitle')}}" class="form-control" id="subtitle" name="subtitle" placeholder="Podnadpis" required>
         </div>
         <div class="form-group">
-            #Tagy<br>
+            #Tags<br>
             @foreach($tags as $tag)
             <input type="checkbox" id="tags" name="tags[]" value="{{$tag->id}}">{{$tag->name}}<br>
             @endforeach
             {{--// place for AJAX added tags below--}}
             <div id="freshTags"></div>
             <button type="button" id="addTag" class="btn-info btn">
-               + Novy tag
+               + New tag
             </button>
             <div id="addTagDialog" class="hidden">
                 #<input id="newTagBody" value="" type="text" autofocus/>
@@ -52,11 +52,11 @@
             </div>
         </div>
         <div class="form-group">
-            Blog->hlavný text
-            <textarea value="{{old('body')}}" class="form-control" id="body" name="body" placeholder="Môžeš začať písať..." required></textarea>
+            Blog->main text
+            <textarea value="{{old('body')}}" class="form-control" id="body" name="body" placeholder="Click here for typing" required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Publikuj</button>
+        <button type="submit" class="btn btn-primary">Publish</button>
     </form>
     <script src="/js/create.js"></script>
     @if(count($errors))

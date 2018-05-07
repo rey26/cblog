@@ -1,10 +1,9 @@
 function resetModal() {
-console.log('resetModal');
     $("#closeModal").click(function () {
-    let html='                            <label for="inputLink" class="col-sm-2 control-label">Kategoria</label>\n' +
+    let html='                            <label for="inputLink" class="col-sm-2 control-label">Category</label>\n' +
         '                            <div id="catEdit">\n' +
         '                                <div class="col-sm-8">\n' +
-        '                                    <input type="text" class="form-control" id="catName" placeholder="Nazov kategorie" value="" autofocus required>\n' +
+        '                                    <input type="text" class="form-control" id="catName" placeholder="Category name" value="" autofocus required>\n' +
         '                                </div>\n' +
         '                                <div class="col-sm-2">\n' +
         '                                    <button type="button" class="btn btn-primary" id="saveCatBtn">\n' +
@@ -14,7 +13,7 @@ console.log('resetModal');
         '                            </div>\n' +
         '                            <span id="freshCat"></span>\n' +
         '                            <div class="col-sm-10">\n' +
-        '                                <input type="checkbox" class="sform-control" id="catChildBox">Podkategorie<br>\n' +
+        '                                <input type="checkbox" class="sform-control" id="catChildBox">Subcategories<br>\n' +
         '                                <span id="freshChildren"></span>\n' +
         '                                <div id="catChild" class="hidden">\n' +
         '                                    <input id="newChildBody" value="" type="text" autofocus/>\n' +
@@ -128,7 +127,6 @@ function saveChild() {
 
 function deleteCat() {
     $(".deleteCat").click(function () {
-        console.log('Delete Cat');
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
