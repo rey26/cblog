@@ -17,7 +17,7 @@ Route::get('/posts/tags/{tag}', 'TagsController@index');
 Route::get('/posts/cats/{cat}', 'CatsController@index');
 
 Route::post('/tags', 'TagsController@store');
-Route::put('/tags/{tag}', 'TagsController@edit');
+Route::put('/tags', 'TagsController@edit');
 Route::delete('/tags/{tag}', 'TagsController@delete');
 
 Route::get('/home', 'HomeController@index')->name('home');

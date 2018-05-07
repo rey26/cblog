@@ -77,7 +77,7 @@ module.exports = __webpack_require__(3);
 /***/ (function(module, exports) {
 
 function addCheckBox(data) {
-    var output = '<div id="tagGroup' + data.id + '"><input type="checkbox" id="tags" name="tags[]" value="' + data.id + '" checked/><span id="tagName' + data.id + '">' + data.name + '</span>';
+    var output = '<div id="tagGroup' + data.id + '"><input type="checkbox" id="tags" name="tags[]" value="' + data.id + '" checked/><a href="#" class="tagEdit" data-name="name" data-type="text" data-pk="' + data.id + '" data-title="Enter name">' + data.name + '</a>';
     output += '&nbsp;<button class="btn btn-danger btn-xs deleteTag" value="' + data.id + '" type="button"><i class="fas fa-times"></i></button>';
     output += '&nbsp;<button class="btn btn-primary btn-xs editTag" value="' + data.id + '" type="button"><i class="fas fa-edit"></i></button><br></div>';
     $("#freshTags").append(output);
@@ -104,49 +104,26 @@ function tagDeleter() {
     });
 }
 
-function tagUpdater() {
+function editableTag() {
+    var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ".tagEdit";
+    var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '/tags';
 
-    $(".editTag").on('click', function () {
-        var tag_id = $(this).val();
-
-        $("#addTagDialog").hide();
-        $("#tagGroup" + tag_id).hide();
-        var text = $("#tagGroup" + tag_id).text();
-        var dialog = '<div id="editTag"> <input id="updatedTag" value="' + text + '" type="text" autofocus/> <button id="save" class="btn-info btn" type="button"> <i class="fas fa-check"></i> </button></div>';
-        $("#freshTags").append(dialog);
-
-        $("#save").click(function () {
-            $("#updatedTag").hide();
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            var formData = {
-                id: tag_id,
-                name: $("#updatedTag").val()
-            };
-            console.log(formData);
-            $.ajax({
-                type: "PUT",
-                url: '/tags/' + tag_id,
-                data: formData,
-                dataType: 'json',
-                success: function success(data) {
-                    addCheckBox(data);
-                    $("#editTag").hide();
-                    $("#newTagBody").val("");
-                    $("#addTagDialog").show();
-                    tagDeleter();
-                    tagUpdater();
-                },
-                error: function error(data) {
-                    console.log('Error', data);
-                }
-            });
-        });
+    $.fn.editable.defaults.mode = 'popup';
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // edit cat info
+    $(element).editable({
+        url: url,
+        ajaxOptions: {
+            type: 'put',
+            dataType: 'json'
+        },
+        error: function error(data) {
+            console.log('Error:', data);
+        }
     });
 }
 
@@ -185,7 +162,7 @@ $(document).ready(function () {
                 addCheckBox(data);
                 $("#newTagBody").val("");
                 tagDeleter();
-                tagUpdater();
+                editableTag();
             },
             error: function error(data) {
                 console.log('Error: ', data);

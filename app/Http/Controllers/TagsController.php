@@ -20,9 +20,12 @@ class TagsController extends Controller
         return response($output);
     }
 
-    public function edit(Request $request, $tag_id){
-        $tag=Tag::find($tag_id);
-        $tag->name=$request->name;
+    public function edit(Request $request){
+        $tagId=$request->get("pk");
+        $name=$request->get("name"); //fillable name(check model fillables)
+        $value=$request->get("value");
+        $tag=Tag::findOrFail($tagId);
+        $tag->$name=$value;
         $tag->save();
         return response($tag);
     }

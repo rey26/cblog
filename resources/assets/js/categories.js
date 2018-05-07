@@ -169,9 +169,6 @@ $(document).ready(function() {
             e.preventDefault();
             saveCat();
         })
-        // $("#closeModal").click(function () {
-        //     resetModal();
-        // })
 
     })
 
@@ -179,8 +176,6 @@ $(document).ready(function() {
 
 
     //todo: delete categories and subcategories if(cat->posts==0)
-    //todo: reset modal form
-
 
 
 });
