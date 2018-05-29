@@ -59,11 +59,11 @@
                     <!-- Authentication Links -->
                         <ul class="nav navbar-nav navbar-right">
                     @guest
-                        <li><a href="{{ route('login') }}">Prihlásiť sa</a></li>
+                        <li><a href="{{ route('login') }}">Log in</a></li>
 
                         @else
                             @if($user->isAdmin())
-                                <li><a href="{{ route('register') }}">Registrácia</a></li>
+                                <li><a href="{{ route('register') }}">Sign User</a></li>
                             @endif
                             <li class="add">
                                 <a href="/post/create">
@@ -80,10 +80,10 @@
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Odhlásiť sa
+                                            Log out
                                         </a>
                                         <a href="/author/{{$user->username}}">
-                                            Moje blogy
+                                            My blogs
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

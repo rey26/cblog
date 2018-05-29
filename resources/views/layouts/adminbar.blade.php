@@ -1,12 +1,11 @@
 <div >
     <ul class="admin-bar">
-        <li data-toggle="collapse" data-target="#subopt">Kategorie</li>
+        <li data-toggle="collapse" data-target="#subopt">Categories</li>
             <ul id="subopt" class="sub-opt collapse">
-                <a href="/cat/all"><li>ukaz</li></a>
-                <a href="/cat/create"><li>pridaj</li></a>
+                <a href="/cat/all"><li>show</li></a>
+                <a href="/cat/create"><li>add</li></a>
             </ul>
-        <li>Pouzivatelia</li>
-        <li>Kategorie</li>
-        <li>Pouzivatelia</li>
+        <li>Users</li>
+        <li>Categories</li>
     </ul>
 </div>

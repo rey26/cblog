@@ -12,7 +12,7 @@
                         </div>
                     @endif
 
-                    Vitajte v cBlog-u.
+                    Welcome to cBlog
                 </div>
             </div>
         </div>
