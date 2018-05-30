@@ -30,8 +30,8 @@ $factory->define(Post::class, function (Faker $faker) {
 
 
     return [
-        'title' => $faker->sentence(3),
-        'slug' => $faker->word,
+        'title' => $faker->sentence(2),
+        'slug' => $faker->slug,
         'cat_id' => function(){
             return factory(\App\Cat::class)->create()->id;
         },

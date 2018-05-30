@@ -5,10 +5,22 @@ use App\User;
 use App\Cat;
 use Carbon\Carbon;
 use App\Tag;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Post extends Model
 {
-    protected $fillable=['user_id', 'title', 'slug', 'subtitle', 'cat_id', 'body'];
+    use Sluggable;
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+    protected $fillable=['user_id', 'title', 'subtitle', 'cat_id', 'body'];
 
     public function comments(){
         return $this->hasMany(Comment::class);
