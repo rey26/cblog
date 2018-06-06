@@ -26,18 +26,19 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(Post::class, function (Faker $faker) {
-
-
-    return [
-        'title' => $faker->sentence,
-        'cat_id' => function(){
-            return factory(\App\Cat::class)->create()->id;
-        },
-        'user_id' => function(){
-        return factory(\App\User::class)->create()->id;
-        },
-        'subtitle' => $faker->sentence,
-        'body'=>$faker->paragraph()
-    ];
-});
+//$factory->define(Post::class, function (Faker $faker) {
+//
+//
+//    return [
+//        'title' => $faker->sentence,
+//        'slug' => 'SLUG',
+//        'cat_id' => function(){
+//            return factory(\App\Cat::class)->create()->id;
+//        },
+//        'user_id' => function(){
+//        return factory(\App\User::class)->create()->id;
+//        },
+//        'subtitle' => $faker->sentence,
+//        'body'=>$faker->paragraph()
+//    ];
+//});
