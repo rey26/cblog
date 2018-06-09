@@ -34,4 +34,4 @@ The front-end uses lightweight and well-known Java Script framework jQuery, with
 
 I'm young dev from Europe/Slovakia. My name is Matej Malicky and my dream is to become a web developer and manage only the best relationships between machines and people.
 I come from Slovakia/Europe. This is my very first project, so do not hesitate to leave me TODOs. --> matej.malicky@gmail.com
--The project could not be done without tireless help of my dev-friend Vlado
+-The project could not be done without tireless help of my dev-friends Vlado & Lukas
