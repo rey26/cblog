@@ -65,7 +65,12 @@
                             @if($user->isAdmin())
                                 <li><a href="{{ route('register') }}">New User</a></li>
                             @endif
-                            <li class="add">
+                                <li class="add">
+                                    <a href="/cat/all">
+                                        New category
+                                    </a>
+                                </li>
+                                <li class="add">
                                 <a href="/post/create">
                                     New blog
                                 </a>
