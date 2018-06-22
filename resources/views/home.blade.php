@@ -12,7 +12,7 @@
                         </div>
                     @endif
 
-                    Welcome to cBlog
+                    Welcome to cBlog, the intuitive blogging system. Navigate to <a href="/">main screen</a>
                 </div>
             </div>
         </div>
