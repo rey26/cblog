@@ -67,7 +67,7 @@
                             @endif
                             <li class="add">
                                 <a href="/post/create">
-                                    Nový blog
+                                    New blog
                                 </a>
                             </li>
                             <li class="dropdown">
