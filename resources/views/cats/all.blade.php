@@ -56,13 +56,15 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary" id="saveCatBtn">
-                                        <i class="fas fa-check"></i>
-                                    </button><br>
+                                        <i class="fas fa-check"></i>(Enter)
+                                    </button>
                                 </div>
+
                             </div>
                             <span id="freshCat"></span>
-                            <div class="col-sm-10">
-                                <input type="checkbox" class="sform-control" id="catChildBox">Subcategories<br>
+                            <br>
+                            <div class="col-sm-5 " style="margin-left: 20%">
+                                <input type="checkbox" class=" control-label" id="catChildBox"><label for="catChildBox">Subcategories</label> <br>
                                 <span id="freshChildren"></span>
                                 <div id="catChild" class="hidden">
                                     <input id="newChildBody" value="" type="text" autofocus/>
