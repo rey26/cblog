@@ -63,7 +63,7 @@
 
                         @else
                             @if($user->isAdmin())
-                                <li><a href="{{ route('register') }}">Sign User</a></li>
+                                <li><a href="{{ route('register') }}">New User</a></li>
                             @endif
                             <li class="add">
                                 <a href="/post/create">
