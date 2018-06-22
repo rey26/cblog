@@ -213,6 +213,7 @@ $(document).ready(function () {
         $("#newCatModal").modal("show");
         $("#catChildBox").click(function () {
             $("#catChild").toggleClass("hidden");
+            saveCat();
         });
         $("#catEdit").keypress(function (e) {
             if (e.which == 13) {
