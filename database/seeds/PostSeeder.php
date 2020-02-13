@@ -13,11 +13,10 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->delete();
 
-        factory(\App\User::class, 2)->create()->each(function ($u)
-            {
+        factory(\App\User::class, 2)->create()->each(function ($u){
                     $u->posts()->save(factory(\App\Post::class)->create());
 
-        }
+            }
         );
 
 

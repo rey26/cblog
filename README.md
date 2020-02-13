@@ -7,10 +7,10 @@ The front-end uses lightweight and well-known Java Script framework jQuery, with
 
 ### Steps for a proper set-up ###
 
-(recommended OS - Ubuntu 16.04)
+(recommended OS - Ubuntu 18.04)
 * git-clone this project to your machine
 * run composer install
-* make sure you have php version >=7.1 and all variations of it: php7.x-mysql, php7.x-xml and so on
+* make sure you have php version >=7.1 and all plugins: php7.x-mysql, php7.x-xml and so on
 * Copy .env.example file to .env on root folder. You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal Ubuntu.
 * Open your .env file and change the database name (DB_DATABASE) to an empty database name you already have on your machine, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
 * If you are a perfectionist as I'm change APP_NAME to cBlog	
